@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version       = Rebellegion::VERSION
   spec.authors       = ["shinyrachel"]
   spec.email         = ["rachel.kory@gmail.com"]
-
   spec.summary       = "Rebel Legion costume standards viewer"
   spec.description   = "Provides details on membership costume standards for the Rebel Legion Star Wars costuming organization"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."

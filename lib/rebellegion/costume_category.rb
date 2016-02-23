@@ -1,10 +1,11 @@
 class RebelLegion::CostumeCategory
-  attr_accessor :costumes, :name
+  attr_accessor :costumes, :name, :url
 
   @@all = []
 
-  def initialize(name)
+  def initialize(name, url)
     @name = name
+    @url = url
     @costumes = []
     @@all << self
   end
