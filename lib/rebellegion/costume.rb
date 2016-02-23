@@ -1,5 +1,5 @@
 class RebelLegion::Costume
-  attr_accessor :name
+  attr_accessor :name # probably a bunch more
   attr_reader :costume_category
 
   def initialize(name, costume_category) 

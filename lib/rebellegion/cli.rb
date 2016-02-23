@@ -3,23 +3,21 @@ class RebelLegion::CLI
 
   def call
     # RebelLegion::Scraper.new
+    input = nil
     welcome
-    menu
+    view_category_list
     goodbye
   end
 
   def welcome
-    puts "THE REBEL LEGION: An International Star Wars Costuming Organization"
+    puts "THE REBEL LEGION: An International Star Wars Costuming Organization!"
     puts "Welcome to the Rebel Legion Costume Standards Viewer."
   end
 
-  def menu
-    input = nil
-    while input != "exit"
-      view_category_list
-      # how do I exit????
-    end
-  end
+  # def menu
+  #   input = nil
+  #   view_category_list
+  # end
 
   def view_category_list
     puts "Select a category of costumes to view by entering a number, or type 'exit':"
@@ -27,11 +25,7 @@ class RebelLegion::CLI
     puts "1. Jedi" # temp
     puts "2. Pilots" # temp
     input = gets.strip
-    if input != "exit"
-      view_costume_list(input.to_i - 1)
-    else
-      # how do I exit????
-    end
+    view_costume_list(input.to_i - 1) if input != "exit"
   end
 
   def view_costume_list(number)
@@ -42,27 +36,28 @@ class RebelLegion::CLI
     puts "To view a costume's standards for Rebel Legion membership, enter its number."
     puts "To return to the main menu, enter 'main'. Or, type 'exit'." 
     input = gets.strip
-    case input
-      when "main"
+    unless input == "exit"
+      if input == "main"
         view_category_list
-      when "exit"
       else
         view_costume_details(input.to_i - 1)
+      end
     end
   end
 
   def view_costume_details(number)
     # RebelLegion::Costume.all[number].view_details
-    puts "#{number}. placeholder" # temp
+    puts "#{number + 1}. placeholder" # temp
     puts "To go back, enter 'back'."
     puts "To return to the main menu, enter 'main'. Or, type 'exit'." 
     input = gets.strip
-    case input
+    unless input == "exit"
+      case input
       when "back"
         view_costume_list(@current_category)
       when "main"
         view_category_list
-      when "exit"
+      end
     end
   end
 
