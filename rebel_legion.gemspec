@@ -4,16 +4,16 @@
 require_relative './lib/rebellegion/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rebellegion"
-  spec.version       = Rebellegion::VERSION
+  spec.name          = "rebel_legion"
+  spec.version       = RebelLegion::VERSION
   spec.authors       = ["shinyrachel"]
   spec.email         = ["rachel.kory@gmail.com"]
   spec.summary       = "Rebel Legion costume standards viewer"
   spec.description   = "Provides details on membership costume standards for the Rebel Legion Star Wars 'good guys' costuming organization"
-  spec.homepage      = "https://github.com/shinyrachel/rebellegion"
+  spec.homepage      = "https://github.com/shinyrachel/rebel_legion"
   spec.license       = "MIT"
-  spec.executables   << "rebellegion"
-  spec.files         = ["config/environment", "lib/rebellegion.rb", "lib/rebellegion/cli.rb", "lib/rebellegion/costume.rb", "lib/rebellegion/costume_category.rb", "lib/rebellegion/scraper.rb"]
+  spec.executables   << "rebel_legion"
+  spec.files         = ["config/environment", "lib/rebel_legion.rb", "lib/rebel_legion/cli.rb", "lib/rebel_legion/costume.rb", "lib/rebel_legion/costume_category.rb", "lib/rebel_legion/scraper.rb"]
 
   # # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # # delete this section to allow pushing this gem to any host.
@@ -30,5 +30,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "nokogiri", "> 0"
+  spec.add_development_dependency "nokogiri", ">= 0"
+  spec.add_development_dependency "colorize", ">= 0"
 end

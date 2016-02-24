@@ -2,6 +2,7 @@ class RebelLegion::Scraper
   attr_accessor :categories
 
   def initialize
+    puts "Loading....."
     @categories = {}
     @costume_pages = {}
     get_categories("http://www.rebellegion.com/costume-standards/by-category/")

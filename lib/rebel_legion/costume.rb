@@ -25,7 +25,8 @@ class RebelLegion::Costume
     i = 0
     details.each do |detail|
       i += 1
-      puts "#{i}. #{detail}"
+      puts "#{i}. ".colorize(:yellow) + "#{detail}"
     end
+    puts "For more info, visit #{url.colorize(:light_cyan)}"
   end
 end

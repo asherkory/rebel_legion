@@ -2,8 +2,8 @@ class RebelLegion::CLI
   attr_accessor :current_category, :current_category_number
 
   def call
-    #  would be nice to have a loading bar here...
     RebelLegion::Scraper.new
+    #  would be nice to have a loading bar here...
     input = nil
     welcome
     view_category_list
@@ -11,12 +11,12 @@ class RebelLegion::CLI
   end
 
   def welcome
-    puts "THE REBEL LEGION: An International Star Wars Costuming Organization!"
+    puts "THE REBEL LEGION: An International Star Wars Costuming Organization!".colorize(:red)
     puts "Welcome to the Rebel Legion Costume Standards Viewer."
   end
 
   def view_category_list
-    puts "Select a category of costumes to view by entering a number, or type 'exit':"
+    puts "Select a category of costumes to view by entering a number, or type 'exit':".colorize(:light_red)
     RebelLegion::CostumeCategory.display_all_names
     input = gets.strip
     view_costume_list(input.to_i - 1) if input != "exit"
@@ -26,8 +26,8 @@ class RebelLegion::CLI
     @current_category_number = number
     @current_category = RebelLegion::CostumeCategory.all[number]
     current_category.display_costume_names
-    puts "To view a costume's standards for Rebel Legion membership, enter its number."
-    puts "To return to the main menu, enter 'main'. Or, type 'exit'." 
+    puts "To view a costume's standards for Rebel Legion membership, enter its number.".colorize(:light_red)
+    puts "To return to the main menu, enter 'main'. Or, type 'exit'.".colorize(:light_red)
     input = gets.strip
     unless input == "exit"
       if input == "main"
@@ -40,8 +40,8 @@ class RebelLegion::CLI
 
   def view_costume_details(number)
     @current_category.costumes[number].view_details
-    puts "To go back, enter 'back'."
-    puts "To return to the main menu, enter 'main'. Or, type 'exit'." 
+    puts "To go back, enter 'back'.".colorize(:light_red)
+    puts "To return to the main menu, enter 'main'. Or, type 'exit'.".colorize(:light_red)
     input = gets.strip
     unless input == "exit"
       case input
@@ -54,6 +54,6 @@ class RebelLegion::CLI
   end
 
   def goodbye
-    puts "May the Force be with you...always."
+    puts "May the Force be with you...always.".colorize(:red)
   end
 end

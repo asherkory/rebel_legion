@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative "../lib/rebellegion"
+require_relative "../lib/rebel_legion"
 
 RebelLegion::CLI.new.call

@@ -18,7 +18,7 @@ class RebelLegion::CostumeCategory
     i = 0
     @@all.each do |category| 
       i += 1
-      puts "#{i}. #{category.name}" 
+      puts "#{i}. ".colorize(:yellow) + "#{category.name}" 
     end
   end
 
@@ -30,7 +30,7 @@ class RebelLegion::CostumeCategory
     i = 0
     costumes.each do |costume| 
       i += 1
-      puts "#{i}. #{costume.name}"
+      puts "#{i}. ".colorize(:yellow) + "#{costume.name}"
     end
   end
 

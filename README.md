@@ -1,10 +1,10 @@
-# Rebellegion
+# RebelLegion
 
 This Ruby gem provides a CLI to view details on membership costume standards for the Rebel Legion Star Wars "good guys" costuming organization.
 
 ## Installation
 
-    $ gem install rebellegion
+    $ gem install rebel_legion
 
 ## Usage
 
@@ -18,4 +18,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests welcome: https://github.com/shinyrachel/rebellegion
+Bug reports and pull requests welcome: https://github.com/shinyrachel/rebel_legion
