@@ -1,8 +1,8 @@
-require "pry"
-require "open-uri"
-require_relative "../rebellegion.rb"
-require_relative "./costume_category.rb"
-require_relative "./costume.rb"
+# require "pry"
+# require "open-uri"
+# require_relative "../rebellegion.rb"
+# require_relative "./costume_category.rb"
+# require_relative "./costume.rb"
 
 class RebelLegion::Scraper
   attr_accessor :categories
@@ -12,8 +12,8 @@ class RebelLegion::Scraper
     @costume_pages = {}
     get_categories("http://www.rebellegion.com/costume-standards/by-category/")
     make_costume_categories
-    get_costumes
-    # make_costume
+    get_and_make_costumes
+    get_costume_details
   end
 
   def get_categories(url) # gets the main costume category list
@@ -41,8 +41,15 @@ class RebelLegion::Scraper
   def get_costume_details # details scraped from each costume's url
     RebelLegion::Costume.all.each do |costume|
       doc = Nokogiri::HTML(open(costume.url))
+      doc.css("div#left-area article.entry-content.clearfix div.et-box.et-shadow div.et-box-content").each do |item|
+        if !item.css("ol li").empty?
+          item.css("ol li").each { |subitem| costume.details << subitem.text }
+        else
+          costume.details << item.text
+        end
+      end
     end
   end
 end
 
-RebelLegion::Scraper.new
+# RebelLegion::Scraper.new

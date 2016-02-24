@@ -24,7 +24,6 @@ class RebelLegion::CostumeCategory
 
   def add_costume(costume)
     @costumes << costume
-    costume.costume_category = self
   end
 
   def display_costume_names
