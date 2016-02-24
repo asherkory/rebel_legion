@@ -5,7 +5,7 @@ require_relative "./costume_category.rb"
 require_relative "./costume.rb"
 
 class RebelLegion::Scraper
-  attr_accessor :categories, :costume_pages
+  attr_accessor :categories
 
   def initialize
     @categories = {}
@@ -29,16 +29,19 @@ class RebelLegion::Scraper
     end
   end
 
-  def get_costumes # collects titles & urls of costume pages
+  def get_and_make_costumes # collects titles & urls of costume pages, sends to Costume class
     RebelLegion::CostumeCategory.all.each do |costume_category|
       doc = Nokogiri::HTML(open(costume_category.url))
       doc.css("div#left-area article.entry-content.clearfix div.et_pt_blogentry.clearfix").each do |costume|
-        costume_pages[costume.css("h2.et_pt_title a").text] = costume.css("h2.et_pt_title a").attribute("href").value
+        RebelLegion::Costume.new(costume.css("h2.et_pt_title a").text, costume_category, costume.css("h2.et_pt_title a").attribute("href").value)
       end
     end
   end
 
-  def make_costume # sends costume data to the Costume class: costume.name will be from costume_pages key, details scraped from url (value)
+  def get_costume_details # details scraped from each costume's url
+    RebelLegion::Costume.all.each do |costume|
+      doc = Nokogiri::HTML(open(costume.url))
+    end
   end
 end
 
