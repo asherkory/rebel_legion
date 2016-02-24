@@ -1,9 +1,3 @@
-# require "pry"
-# require "open-uri"
-# require_relative "../rebellegion.rb"
-# require_relative "./costume_category.rb"
-# require_relative "./costume.rb"
-
 class RebelLegion::Scraper
   attr_accessor :categories
 
@@ -23,7 +17,7 @@ class RebelLegion::Scraper
     end
   end
 
-  def make_costume_categories # send data to CostumeCategory class
+  def make_costume_categories # sends data to CostumeCategory class
     categories.each do |name, url|
       RebelLegion::CostumeCategory.new(name, url)
     end
@@ -38,7 +32,7 @@ class RebelLegion::Scraper
     end
   end
 
-  def get_costume_details # details scraped from each costume's url
+  def get_costume_details # scrapes each costume's details and sends to that costume
     RebelLegion::Costume.all.each do |costume|
       doc = Nokogiri::HTML(open(costume.url))
       doc.css("div#left-area article.entry-content.clearfix div.et-box.et-shadow div.et-box-content").each do |item|
@@ -51,5 +45,3 @@ class RebelLegion::Scraper
     end
   end
 end
-
-# RebelLegion::Scraper.new

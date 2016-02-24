@@ -21,7 +21,7 @@ class RebelLegion::Costume
     category.add_costume(self)
   end
 
-  def view_details # reads the details data from @details array
+  def view_details
     i = 0
     details.each do |detail|
       i += 1
