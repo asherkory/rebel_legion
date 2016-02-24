@@ -8,7 +8,7 @@ This Ruby gem provides a CLI to view details on membership costume standards for
 
 ## Usage
 
-Run and follow the on-screen prompts!
+Run by typing "rebel_legion" and follow the on-screen prompts!
 
 ## Development
 
