@@ -1,5 +1,5 @@
 class RebelLegion::Costume
-  attr_accessor :name, :url, :details # probably a bunch more
+  attr_accessor :name, :url, :details 
   attr_reader :costume_category
 
   @@all = []
