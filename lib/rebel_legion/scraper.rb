@@ -7,8 +7,6 @@ class RebelLegion::Scraper
     @costume_pages = {}
     get_categories("http://www.rebellegion.com/costume-standards/by-category/")
     make_costume_categories
-    get_and_make_costumes
-    get_costume_details
   end
 
   def get_categories(url) # gets the main costume category list
@@ -26,18 +24,22 @@ class RebelLegion::Scraper
 
   def get_and_make_costumes # collects titles & urls of costume pages, sends to Costume class
     RebelLegion::CostumeCategory.all.each do |costume_category|
+      self.class.scrape_costumes_for_category(costume_category)
+    end
+  end
+
+  def self.scrape_costumes_for_category(costume_category)
       doc = Nokogiri::HTML(open(costume_category.url))
       doc.css("div#left-area article.entry-content.clearfix div.et_pt_blogentry.clearfix").each do |costume|
-        RebelLegion::Costume.new(costume.css("h2.et_pt_title a").text, costume_category, costume.css("h2.et_pt_title a").attribute("href").value)
+        costume_category.new_costume(costume.css("h2.et_pt_title a").text, costume.css("h2.et_pt_title a").attribute("href").value)
       end
-    end
   end
 
   def get_costume_details # scrapes each costume's details and sends to that costume
     RebelLegion::Costume.all.each do |costume|
       doc = Nokogiri::HTML(open(costume.url))
       doc.css("div#left-area article.entry-content.clearfix div.et-box.et-shadow div.et-box-content").each do |item|
-        if !item.css("ol li").empty?
+        if !item.css("ol li").empty? # edge case
           item.css("ol li").each { |subitem| costume.details << subitem.text }
         else
           costume.details << item.text

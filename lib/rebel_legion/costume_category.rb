@@ -27,11 +27,14 @@ class RebelLegion::CostumeCategory
   end
 
   def display_costume_names
-    i = 0
-    costumes.each do |costume| 
-      i += 1
+    RebelLegion::Scraper.scrape_costumes_for_category(self) if costumes.empty?      
+    costumes.each.with_index(1) do |costume, i| 
       puts "#{i}. ".colorize(:yellow) + "#{costume.name}"
     end
+  end
+
+  def new_costume(name, url)
+    RebelLegion::Costume.new(name, self, url)
   end
 
 end

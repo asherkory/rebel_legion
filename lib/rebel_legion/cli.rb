@@ -3,7 +3,6 @@ class RebelLegion::CLI
 
   def call
     RebelLegion::Scraper.new
-    #  would be nice to have a loading bar here...
     input = nil
     welcome
     view_category_list

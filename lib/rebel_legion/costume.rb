@@ -22,9 +22,7 @@ class RebelLegion::Costume
   end
 
   def view_details
-    i = 0
-    details.each do |detail|
-      i += 1
+    details.each.with_index(1) do |detail, i|
       puts "#{i}. ".colorize(:yellow) + "#{detail}"
     end
     puts "For more info, visit #{url.colorize(:light_cyan)}"
